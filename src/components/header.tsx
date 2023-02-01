@@ -11,6 +11,7 @@ import {
   InteractiveIcon,
   Nudge,
   VisuallyHidden,
+  HomepageImage,
 } from "./ui"
 import {
   mobileNavOverlay,
@@ -21,6 +22,7 @@ import {
 } from "./header.css"
 import NavItemGroup, { NavItemGroupNavItem } from "./nav-item-group"
 import BrandLogo from "./brand-logo"
+import { GatsbyImage, getImage, IGatsbyImageData } from "gatsby-plugin-image"
 
 type NavItem = {
   id: string
@@ -73,6 +75,18 @@ export default function Header() {
                 icon {
                   alt
                   gatsbyImageData
+                  svg {
+                    content # SVG content optimized with SVGO
+                    originalContent # Original SVG content
+                    dataURI # Optimized SVG as compact dataURI
+                    absolutePath #
+                    relativePath #
+                  }
+                  file {
+                    contentType
+                    url
+                    fileName
+                  }
                 }
               }
             }
@@ -98,14 +112,16 @@ export default function Header() {
     }
   }, [isOpen])
 
+  console.log(data.layout.header)
+
   return (
     <header>
       <Container className={desktopHeaderNavWrapper}>
         <Space size={2} />
         <Flex variant="spaceBetween">
           <NavLink to="/">
-            <VisuallyHidden>Home</VisuallyHidden>
-            <BrandLogo />
+            <VisuallyHidden>Accueil</VisuallyHidden>
+            <BrandLogo></BrandLogo>
           </NavLink>
           <nav>
             <FlexList gap={4}>

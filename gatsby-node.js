@@ -114,6 +114,8 @@ exports.createSchemaCustomization = async ({ actions }) => {
       alt: String
       gatsbyImageData: GatsbyImageData @imagePassthroughArgs
       url: String
+      svg: JSON
+      file: JSON
     }
 
     interface HomepageHero implements Node & HomepageBlock {
@@ -245,6 +247,7 @@ exports.createSchemaCustomization = async ({ actions }) => {
 
     interface LayoutHeader implements Node {
       id: ID!
+      logo: HomepageImage
       navItems: [HeaderNavItem]
       cta: HomepageLink
     }
@@ -368,13 +371,24 @@ exports.createSchemaCustomization = async ({ actions }) => {
       navItems: [NavItem] @link(from: "navItems___NODE")
     }
 
-    type ContentfulAsset implements Node & HomepageImage {
+    type ContentfulSVGAsset {
+      content: String
+      dataURI: String
+    }
+
+    type ContentfulFileAsset {
+      contentType: String
+      url: String
+      fileName: String
+    }
+
+    type ContentfulAsset implements Node & HomepageImage & ContentfulSVGAsset & ContentfulFileAsset {
       id: ID!
       alt: String @proxy(from: "title")
       gatsbyImageData: GatsbyImageData
       url: String @imageUrl
-      file: JSON
       title: String
+      svg: ContentfulSVGAsset
     }
 
     type ContentfulHomepageHero implements Node & HomepageHero & HomepageBlock
@@ -574,6 +588,7 @@ exports.createSchemaCustomization = async ({ actions }) => {
   actions.createTypes(/* GraphQL */ `
     type ContentfulLayoutHeader implements Node & LayoutHeader @dontInfer {
       id: ID!
+      logo: HomepageImage @link(from: "logo___NODE")
       navItems: [HeaderNavItem] @link(from: "navItems___NODE")
       cta: HomepageLink @link(from: "cta___NODE")
     }
@@ -623,4 +638,3 @@ exports.createPages = ({ actions }) => {
     component: require.resolve("./src/components/footer.tsx"),
   })
 }
-      

@@ -1,5 +1,4 @@
 import * as React from "react"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import {
   Box,
   Flex,
@@ -7,6 +6,7 @@ import {
   HomepageImage,
   NavButtonLink,
   NavLink,
+  SvgImage,
 } from "./ui"
 import Caret from "./caret"
 import * as styles from "./nav-item-group.css"
@@ -115,10 +115,11 @@ export default function NavItemGroup({ name, navItems }: NavItemGroupProps) {
                 <NavLink to={navItem.href} className={styles.navLinkListLink}>
                   <Flex variant="start" gap={3}>
                     {navItem.icon && (
-                      <GatsbyImage
+                      <SvgImage
                         alt={navItem.icon.alt}
-                        image={getImage(navItem.icon.gatsbyImageData)}
-                        className={styles.navIcon}
+                        gatsbyImageData={navItem.icon.gatsbyImageData}
+                        svg={navItem.icon.svg}
+                        file={navItem.icon.file}
                       />
                     )}
                     <Flex variant="columnStart" marginY={1} gap={0}>

@@ -6,10 +6,11 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    siteUrl: "https://gatsbycontentfulhomepage.gatsbyjs.io/",
-    title: "Gatsby Contentful Homepage Starter",
-    author: `Gatsby`,
-    description: "A Gatsby Starter for building homepages with Contentful",
+    siteUrl: "https://compagnieanimale.fr/",
+    title: "Compagnie Animale",
+    author: `Compagnie Animale`,
+    description:
+      "Compagnie Animale, comportementaliste pour chiens et chats en France dans les Landes 40, à Mimizan.",
   },
   plugins: [
     {
@@ -24,12 +25,13 @@ module.exports = {
     "gatsby-plugin-sharp",
     "gatsby-plugin-image",
     "gatsby-transformer-sharp",
+    "gatsby-transformer-inline-svg",
     "gatsby-plugin-vanilla-extract",
     {
       resolve: "gatsby-plugin-manifest",
       options: {
-        name: "Gatsby Starter Contentful Homepage",
-        short_name: "Gatsby",
+        name: "Compagnie Animale",
+        short_name: "Compagnie Animale",
         start_url: "/",
         // These can be imported once ESM support lands
         background_color: "#ffe491",

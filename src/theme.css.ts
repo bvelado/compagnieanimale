@@ -46,9 +46,9 @@ const fontWeights = {
 }
 
 const fonts = {
-  text: '"DM Sans", sans-serif',
-  heading: '"DM Sans", sans-serif',
-  mono: "DM Mono, Menlo, monospace",
+  text: '"PT Serif", sans-serif',
+  heading: '"PT Serif", sans-serif',
+  mono: "PT Mono, monospace",
 }
 
 const lineHeights = {

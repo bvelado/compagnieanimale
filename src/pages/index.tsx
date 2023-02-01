@@ -20,6 +20,8 @@ interface HomepageProps {
 export default function Homepage(props: HomepageProps) {
   const { homepage } = props.data
 
+  console.log({ img: homepage.image });
+
   return (
     <Layout>
       {homepage.blocks.map((block) => {
